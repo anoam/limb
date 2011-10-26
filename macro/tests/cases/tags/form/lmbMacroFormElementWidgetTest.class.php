@@ -29,6 +29,16 @@ class lmbMacroFormElementWidgetTest extends lmbBaseMacroTagTest
     $this->assertEqual($widget->getValue(), 10);
   }
 
+  function testGetValue_FromFormDatasource_ByPathInName()
+  {
+    $form = new lmbMacroFormWidget('my_id');
+    $form->setDatasource(array('parent' => array('child' => array('leaf' => 10))));
+    $widget = new lmbMacroFormElementWidget('parent[child][leaf]');
+    $widget->setForm($form);
+
+    $this->assertEqual($widget->getValue(), 10);
+  }
+
   function testGetValue_FromFormDatasource_ByNameAttribute()
   {
     $form = new lmbMacroFormWidget('my_id');

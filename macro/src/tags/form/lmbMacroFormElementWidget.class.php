@@ -82,10 +82,28 @@ class lmbMacroFormElementWidget extends lmbMacroHtmlTagWidget
     if(is_object($this->form))
     {
       $ds = $this->form->getDatasource();
-      $id = $this->getName();
-      if(isset($ds[$id]))
-        return $ds[$id];
+      if(!$this->_isArrayBasedName())
+      {
+        $id = $this->getName();
+        if(isset($ds[$id]))
+          return $ds[$id];
+      }
+      else
+      {
+        $str = str_replace(']', '', $this->getName());
+        $path = explode('[', $str);
+        foreach($path as $element)
+          $ds = $ds[$element];
+        return $ds;
+      }
     }
+  }
+
+  protected function _isArrayBasedName()
+  {
+    $begins_count = substr_count($this->getName(), '[');
+    $ends_count = substr_count($this->getName(), ']');
+    return ($begins_count && $begins_count == $ends_count);
   }
 
   function renderAttributes()
