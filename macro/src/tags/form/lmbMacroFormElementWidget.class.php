@@ -93,7 +93,11 @@ class lmbMacroFormElementWidget extends lmbMacroHtmlTagWidget
         $str = str_replace(']', '', $this->getName());
         $path = explode('[', $str);
         foreach($path as $element)
+        {
+          if(!isset($ds[$element]))
+            return;
           $ds = $ds[$element];
+        }
         return $ds;
       }
     }
