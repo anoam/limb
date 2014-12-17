@@ -37,7 +37,7 @@ class SimpleTestCompatibility {
      *    @access public
      *    @static
      */
-    function isIdentical($first, $second) {
+    static function isIdentical($first, $second) {
         if (version_compare(phpversion(), '5') >= 0) {
             return SimpleTestCompatibility::_isIdenticalType($first, $second);
         }
@@ -55,7 +55,7 @@ class SimpleTestCompatibility {
      *    @access private
      *    @static
      */
-    function _isIdenticalType($first, $second) {
+    static function _isIdenticalType($first, $second) {
         if (gettype($first) != gettype($second)) {
             return false;
         }
@@ -84,7 +84,7 @@ class SimpleTestCompatibility {
      *    @access private
      *    @static
      */
-    function _isArrayOfIdenticalTypes($first, $second) {
+    static function _isArrayOfIdenticalTypes($first, $second) {
         if (array_keys($first) != array_keys($second)) {
             return false;
         }
@@ -107,7 +107,7 @@ class SimpleTestCompatibility {
      *    @access public
      *    @static
      */
-    function isReference(&$first, &$second) {
+    static function isReference(&$first, &$second) {
         if (version_compare(phpversion(), '5', '>=') && is_object($first)) {
             return ($first === $second);
         }

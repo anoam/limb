@@ -294,13 +294,8 @@ class SimpleReflection {
         if ($name == '__toString') {
             return "function $name()";
         }
-        if ($this->_isInterfaceMethod($name) ||
-                $this->_isAbstractMethod($name) ||
-                $this->_isAbstractMethodInParents($name) ||
-                $this->_isStaticMethod($name)) {
-            return $this->_getFullSignature($name);
-        }
-        return "function $name()";
+
+        return $this->_getFullSignature($name);
     }
 
     /**

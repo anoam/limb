@@ -73,7 +73,9 @@ function testNotCheckedInputs_When_FirstInputChecked()
 
     $expected = '<form id="my_form"><input type="checkbox" id="test_3" name="test_3" value="aa" checked="checked" /><input type="checkbox" id="test_4" name="test_4" value="bb" /></form>';
 
-    $this->assertEqual(preg_match('~\s{2,}~', '', $page->render()), $expected);
+    $rendered = $page->render();
+
+    $this->assertEqual(preg_match('~\s{2,}~', '', $rendered), $expected);
   }
 }
 

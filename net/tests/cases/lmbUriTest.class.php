@@ -144,7 +144,8 @@ class lmbUriTest extends UnitTestCase
     $uri = new lmbUri('http://localhost/test.php?key=alfa&key[]=bravo&key[3]=charle');
     //because of index 3
     $this->assertNotEqual($uri->getQueryItem('key'), $expected_key);
-    $result = sort($uri->getQueryItem('key'));
+    $result = $uri->getQueryItem('key');
+    $result = sort($result);
     $this->assertEqual($result, $expected_key);
     
     //mixed with index
