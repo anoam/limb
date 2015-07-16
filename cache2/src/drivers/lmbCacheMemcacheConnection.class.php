@@ -92,12 +92,12 @@ class lmbCacheMemcacheConnection extends lmbCacheAbstractConnection
     return $this->_getMemcache()->delete($this->_resolveKey($key), $ttl);
   }
 
-  function increment($key, $value = 1)
+  function increment($key, $value = 1, $ttl = false)
   {
     return $this->_getMemcache()->increment($this->_resolveKey($key), $value);
   }
 
-  function decrement($key, $value = 1)
+  function decrement($key, $value = 1, $ttl = false)
   {
     return $this->_getMemcache()->decrement($this->_resolveKey($key), $value);
   }

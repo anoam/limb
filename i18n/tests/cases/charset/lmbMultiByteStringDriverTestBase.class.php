@@ -9,7 +9,7 @@
 
 abstract class lmbMultiByteStringDriverTestBase extends UnitTestCase
 {
-    function & _createDriver() {
+    function _createDriver() {
         return null;
     }
 

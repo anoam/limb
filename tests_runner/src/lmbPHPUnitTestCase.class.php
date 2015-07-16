@@ -17,8 +17,8 @@ class lmbPHPUnitTestCase extends UnitTestCase
     return $this->assertPattern($pattern, $subject, $message);
   }
 
-  function error($message = '%s')
+  function fail($message = '%s')
   {
-  	return $this->fail($message);
+  	return parent::fail($message);
   }
 }

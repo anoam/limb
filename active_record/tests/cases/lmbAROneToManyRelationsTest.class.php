@@ -337,7 +337,9 @@ class lmbAROneToManyRelationsTest extends lmbARBaseTestCase
 
     $course->getLectures()->add($lecture);
 
-    $this->assertReference($lecture->getCourse(), $course);
+    $lecture_course = $lecture->getCourse();
+
+    $this->assertReference($lecture_course, $course);
   }
 
   function testDeleteCollection()

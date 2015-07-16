@@ -30,7 +30,8 @@ class lmbInnerUriNormalizerObserverTest extends UnitTestCase
   {
     $observer = new lmbInnerUriNormalizerObserver(new lmbUri('http://test.com'));
     $this->reader->expectOnce('getUri');
-    $this->reader->setReturnReference('getUri', $uri = new lmbUri('http://test.com/page.html'));
+    $uri = new lmbUri('http://test.com/page.html');
+    $this->reader->setReturnReference('getUri', $uri);
 
     $observer->notify($this->reader);
     $this->assertEqual($uri->toString(), '/page.html');
@@ -40,7 +41,8 @@ class lmbInnerUriNormalizerObserverTest extends UnitTestCase
   {
     $observer = new lmbInnerUriNormalizerObserver(new lmbUri('http://test.com'));
     $this->reader->expectOnce('getUri');
-    $this->reader->setReturnReference('getUri', $uri = new lmbUri('ftp://test.com/page.html'));
+    $uri = new lmbUri('ftp://test.com/page.html');
+    $this->reader->setReturnReference('getUri', $uri);
 
     $observer->notify($this->reader);
     $this->assertEqual($uri->toString(), 'ftp://test.com/page.html');
@@ -50,7 +52,8 @@ class lmbInnerUriNormalizerObserverTest extends UnitTestCase
   {
     $observer = new lmbInnerUriNormalizerObserver(new lmbUri('http://test.com:22'));
     $this->reader->expectOnce('getUri');
-    $this->reader->setReturnReference('getUri', $uri = new lmbUri('http://test.com/page.html'));
+    $uri = new lmbUri('http://test.com/page.html');
+    $this->reader->setReturnReference('getUri', $uri);
 
     $observer->notify($this->reader);
     $this->assertEqual($uri->toString(), 'http://test.com/page.html');
@@ -60,7 +63,8 @@ class lmbInnerUriNormalizerObserverTest extends UnitTestCase
   {
     $observer = new lmbInnerUriNormalizerObserver(new lmbUri('http://test.com'));
     $this->reader->expectOnce('getUri');
-    $this->reader->setReturnReference('getUri', $uri = new lmbUri('http://test2.com/page.html'));
+    $uri = new lmbUri('http://test2.com/page.html');
+    $this->reader->setReturnReference('getUri', $uri);
 
     $observer->notify($this->reader);
     $this->assertEqual($uri->toString(), 'http://test2.com/page.html');

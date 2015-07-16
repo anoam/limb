@@ -31,11 +31,6 @@ class lmbARManyToManyCollection extends lmbARRelationCollection
     return $query; 
   }
   
-  static function createFullARQueryForRelation($relation_info, $conn, $params = array())
-  {
-    return parent :: createFullARQueryForRelation(__CLASS__, $relation_info, $conn, $params);
-  }
-  
   static function createCoreARQueryForRelation($relation_info, $conn, $params = array())
   {
     $class = $relation_info['class'];
