@@ -52,8 +52,8 @@ class lmbARValidationTest extends lmbARBaseTestCase
     $object->setInsertValidator($insert_validator);
     $insert_validator->setReturnValue('validate', true);
     $object->validate($error_list);
-    $object_error_list = $object->getErrorList();
-    $this->assertReference($object_error_list, $error_list);
+
+    $this->assertReference($object->getErrorList(), $error_list);
   }
 
   function testValidateNewFailed()

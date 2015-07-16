@@ -99,7 +99,7 @@ class lmbDbTypeInfo
      );
   }
 
-  static function getColumnTypeAccessors()
+  function getColumnTypeAccessors()
   {
     return array(
       self::TYPE_BIT => 'setBit',

@@ -163,14 +163,7 @@ class lmbIni extends lmbSet
 
   protected function _parseConstants($value)
   {
-    return preg_replace_callback(
-        '~\{([^\}]+)\}~',
-        create_function(
-            '$matches',
-            'return constant($matches[1]);'
-        ),
-        $value
-    );
+    return preg_replace('~\{([^\}]+)\}~e', "constant('\\1')", $value);
   }
 
   function getOption($var_name, $group_name = null)

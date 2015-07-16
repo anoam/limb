@@ -32,7 +32,7 @@ class SimpleTest {
      *    @static
      *    @access public
      */
-    static function getVersion() {
+    function getVersion() {
         $content = file(dirname(__FILE__) . '/VERSION');
         return trim($content[0]);
     }
@@ -46,7 +46,7 @@ class SimpleTest {
      *    @static
      *    @access public
      */
-    static function ignore($class) {
+    function ignore($class) {
         $registry = &SimpleTest::_getRegistry();
         $registry['IgnoreList'][strtolower($class)] = true;
     }
@@ -66,7 +66,7 @@ class SimpleTest {
      *    @static
      *    @access public
      */
-    static function ignoreParentsIfIgnored($classes) {
+    function ignoreParentsIfIgnored($classes) {
         $registry = &SimpleTest::_getRegistry();
         foreach ($classes as $class) {
             if (SimpleTest::isIgnored($class)) {
@@ -128,7 +128,7 @@ class SimpleTest {
      *    @access public
      *    @static
      */
-    static function isIgnored($class) {
+    function isIgnored($class) {
         $registry = &SimpleTest::_getRegistry();
         return isset($registry['IgnoreList'][strtolower($class)]);
     }
@@ -136,7 +136,7 @@ class SimpleTest {
     /**
      *    @deprecated
      */
-    static function setMockBaseClass($mock_base) {
+    function setMockBaseClass($mock_base) {
         $registry = &SimpleTest::_getRegistry();
         $registry['MockBaseClass'] = $mock_base;
     }
@@ -144,7 +144,7 @@ class SimpleTest {
     /**
      *    @deprecated
      */
-    static function getMockBaseClass() {
+    function getMockBaseClass() {
         $registry = &SimpleTest::_getRegistry();
         return $registry['MockBaseClass'];
     }
@@ -415,35 +415,35 @@ class SimpleTestOptions extends SimpleTest {
     /**
      *    @deprecated
      */
-    static function getVersion() {
+    function getVersion() {
         return Simpletest::getVersion();
     }
 
     /**
      *    @deprecated
      */
-    static function ignore($class) {
+    function ignore($class) {
         return Simpletest::ignore($class);
     }
 
     /**
      *    @deprecated
      */
-    static function isIgnored($class) {
+    function isIgnored($class) {
         return Simpletest::isIgnored($class);
     }
 
     /**
      *    @deprecated
      */
-    static function setMockBaseClass($mock_base) {
+    function setMockBaseClass($mock_base) {
         return Simpletest::setMockBaseClass($mock_base);
     }
 
     /**
      *    @deprecated
      */
-    static function getMockBaseClass() {
+    function getMockBaseClass() {
         return Simpletest::getMockBaseClass();
     }
 

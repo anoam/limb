@@ -80,14 +80,14 @@ class lmbDateTimeZone
     return new lmbDateTimeZone($_DATE_TIMEZONE_DEFAULT);
   }
 
-  static function setDefault($id)
+  function setDefault($id)
   {
     global $_DATE_TIMEZONE_DEFAULT;
     if (lmbDateTimeZone::isValidId($id))
       $_DATE_TIMEZONE_DEFAULT = $id;
   }
 
-  static function isValidId($id)
+  function isValidId($id)
   {
     global $_DATE_TIMEZONE_DATA;
     if (isset($_DATE_TIMEZONE_DATA[$id]))

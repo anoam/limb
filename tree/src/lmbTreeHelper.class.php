@@ -16,7 +16,7 @@ lmb_require('limb/core/src/lmbCollection.class.php');
  */
 class lmbTreeHelper
 {
-  static function sort($rs, $sort_params, $id_hash = 'id', $parent_hash = 'parent_id')
+  function sort($rs, $sort_params, $id_hash = 'id', $parent_hash = 'parent_id')
   {
     $tree_array = self :: _convertRs2Array($rs);
 
@@ -30,7 +30,7 @@ class lmbTreeHelper
     return new lmbCollection($sorted_tree_array);
   }
 
-  static function _convertRs2Array($rs)
+  function _convertRs2Array($rs)
   {
     $tree_array = array();
     foreach($rs as $record)
@@ -39,7 +39,7 @@ class lmbTreeHelper
     return $tree_array;
   }
 
-  static function _doSort($tree_array, &$sorted_tree_array, $sort_params, $parent_id, $id_hash, $parent_hash)
+  function _doSort($tree_array, &$sorted_tree_array, $sort_params, $parent_id, $id_hash, $parent_hash)
   {
     $children = array();
 

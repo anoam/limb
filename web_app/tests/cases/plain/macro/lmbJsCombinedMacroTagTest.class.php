@@ -28,8 +28,7 @@ class lmbJsCombinedMacroTagTest extends lmbMacroTestCase
 
     $page = $this->_createMacroTemplate($template, 'tpl.html'); 
     $content = trim($page->render());
-    $dir_content  = lmbFs :: ls($root.'/media/var/');
-    $file = array_shift($dir_content);
+    $file = array_shift(lmbFs :: ls($root.'/media/var/'));
 
     $this->assertEqual('<script type="text/javascript" src="'.$this->toolkit->addVersionToUrl('media/var/'.$file).'" ></script>', $content);
 
@@ -55,9 +54,8 @@ class lmbJsCombinedMacroTagTest extends lmbMacroTestCase
       {{js_once src="js/blog.js" }}
     {{/js:combined}}';
 
-    $this->_createMacroTemplate($template, 'tpl.html')->render();
-    $dir_content = lmbFs :: ls($root.'/media/var/');
-    $file_name_one = array_shift($dir_content);
+    $this->_createMacroTemplate($template, 'tpl.html')->render(); 
+    $file_name_one = array_shift(lmbFs :: ls($root.'/media/var/'));
     
     $template = '
     {{js:combined dir="media/var"}}
@@ -65,9 +63,8 @@ class lmbJsCombinedMacroTagTest extends lmbMacroTestCase
       {{js_once src="js/main.js" }}
     {{/js:combined}}';
     
-    $this->_createMacroTemplate($template, 'tpl.html')->render();
-    $dir_content = lmbFs :: ls($root.'/media/var/');
-    $file_name_two = array_shift($dir_content);
+    $this->_createMacroTemplate($template, 'tpl.html')->render(); 
+    $file_name_two = array_shift(lmbFs :: ls($root.'/media/var/'));
 
     $this->assertEqual($file_name_one, $file_name_two);
   }
@@ -96,8 +93,8 @@ class lmbJsCombinedMacroTagTest extends lmbMacroTestCase
     $template = '{{js_combined dir="media"}}{{js_once src="js/main.js" safe="true" }}{{js_once src="js/blog.js" }}{{/js_combined}}';
     $page = $this->_createMacroTemplate($template, 'tpl.html'); 
     $page->render();
-    $dir_content = lmbFs :: ls($root.'/media/');
-    $file = array_shift($dir_content);
+    
+    $file = array_shift(lmbFs :: ls($root.'/media/'));
 
     $js_content = "/* include main.js - NOT FOUND */\n\n/* include blog.js */\nfunction blog() {};";
     $this->assertEqual(file_get_contents($root . '/media/'.$file), $js_content);
