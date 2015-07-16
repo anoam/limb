@@ -1138,7 +1138,7 @@ class Mock {
      *    @static
      *    @access public
      */
-    function generate($class, $mock_class = false, $methods = false) {
+    static function generate($class, $mock_class = false, $methods = false) {
         $generator = new MockGenerator($class, $mock_class);
         return $generator->generateSubclass($methods);
     }
@@ -1155,7 +1155,7 @@ class Mock {
      *    @static
      *    @access public
      */
-    function generatePartial($class, $mock_class, $methods) {
+    static function generatePartial($class, $mock_class, $methods) {
         $generator = new MockGenerator($class, $mock_class);
         return $generator->generatePartial($methods);
     }
@@ -1165,7 +1165,7 @@ class Mock {
      *    @access public
      *    @static
      */
-    function getExpectationLine() {
+    static function getExpectationLine() {
         $trace = new SimpleStackTrace(array('expect'));
         return $trace->traceMethod();
     }
@@ -1294,11 +1294,13 @@ class MockGenerator {
             $implements = 'implements ' . implode(', ', $interfaces);
         }
         $code = "class " . $this->_mock_class . " extends " . $this->_mock_base . " $implements {\n";
-        $code .= "    function " . $this->_mock_class . "() {\n";
-        $code .= "        \$this->" . $this->_mock_base . "();\n";
-        $code .= "    }\n";
         if (in_array('__construct', $this->_reflection->getMethods())) {
             $code .= "    " . $this->_reflection->getSignature('__construct') . " {\n";
+            $code .= "        \$this->" . $this->_mock_base . "();\n";
+            $code .= "    }\n";
+        }
+        else{
+            $code .= "    function " . $this->_mock_class . "() {\n";
             $code .= "        \$this->" . $this->_mock_base . "();\n";
             $code .= "    }\n";
         }

@@ -110,9 +110,9 @@ class CourseForTest extends lmbActiveRecord
   
   public $save_calls = 0;
 
-  function save()
+  function save($error_list = NULL)
   {
-    parent :: save();
+    parent :: save($error_list);
     $this->save_calls++;
   }
 }
