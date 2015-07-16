@@ -27,7 +27,7 @@
     */
     class Utility {
 
-        public $logger;
+        public static $logger;
 
         /*{{{ public function getTimeStamp() */
 

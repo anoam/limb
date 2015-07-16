@@ -68,22 +68,15 @@ class lmbClassPath
 
   protected function _parseConstants($value)
   {
-    return preg_replace_callback(
-        '~\{([^\}]+)\}~',
-        create_function(
-            '$matches',
-            'return constant($matches[1]);'
-        ),
-        $value
-    );
+    return preg_replace('~\{([^\}]+)\}~e', "constant('\\1')", $value);
   }
 
   protected function _initClassName()
   {
     if(!$this->raw_path)
       throw new lmbException("Invalid class path: {$this->raw_path}");
-    $path_array = explode('/', $this->raw_path);
-    $this->class_name = end($path_array);
+
+    $this->class_name = end(explode('/', $this->raw_path));
   }
 }
 

@@ -8,4 +8,4 @@ CREATE TABLE `full_text_uri_content_index` (
   PRIMARY KEY  (`id`),
   KEY `uri` (`uri`),
   FULLTEXT KEY `content` (`content`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) TYPE=MyISAM DEFAULT CHARSET=utf8;

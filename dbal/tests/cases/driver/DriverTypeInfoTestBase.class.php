@@ -27,7 +27,7 @@ abstract class DriverTypeInfoTestBase extends UnitTestCase
 
   function testGetColumnTypeAccessors()
   {
-    $mapping = lmbDbTypeInfo::getColumnTypeAccessors();
+    $mapping = $this->typeInfo->getColumnTypeAccessors();
     foreach($this->columnList as $columnType)
     {
       $this->assertTrue(isset($mapping[$columnType]));

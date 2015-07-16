@@ -91,7 +91,7 @@ class SimpleExpectation {
      *    @access public
      *    @static
      */
-    static function isExpectation($expectation) {
+    function isExpectation($expectation) {
         return is_object($expectation) &&
                 SimpleTestCompatibility::isA($expectation, 'SimpleExpectation');
     }
